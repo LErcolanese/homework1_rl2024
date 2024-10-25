@@ -9,12 +9,13 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
   <build_depend>arm_description</build_depend>
+  <build_depend>arm_control</build_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 
   <exec_depend>arm_description</exec_depend>
-
+  <exec_depend>arm_control</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

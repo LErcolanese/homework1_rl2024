@@ -397,7 +397,8 @@
     </inertial>
   </link>
 
-   <gazebo>  
+   
+  <gazebo>  
     <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
     <parameters>$(find arm_control)/config/arm_controllers.yaml</parameters>
       <controller_manager_prefix_node_name>controller_manager</controller_manager_prefix_node_name>
