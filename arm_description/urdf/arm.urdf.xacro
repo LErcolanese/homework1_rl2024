@@ -396,5 +396,75 @@
       <inertia ixx="6.90013881e-05" ixy="0.0" ixz="0.0" iyy="1.24554875e-04" iyz="0.0" izz="1.04295793e-04"/>
     </inertial>
   </link>
+
+   <gazebo>  
+    <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+    <parameters>$(find arm_control)/config/arm_controllers.yaml</parameters>
+      <controller_manager_prefix_node_name>controller_manager</controller_manager_prefix_node_name>
+    </plugin>
+  </gazebo>
+
+
+
+  <ros2_control name="HardwareInterface_Ignition" type="system">
+
+    <hardware>
+      <plugin>ign_ros2_control/IgnitionSystem</plugin> 
+    </hardware>
+ 
+     <joint name="j0">
+        <command_interface name="position"/>
+        <state_interface name="position"> 
+            <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity">
+            <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+        </state_interface>
+    </joint>
+
+    <joint name="j1">
+        <command_interface name="position"/>
+        <state_interface name="position"> 
+            <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity">
+            <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+        </state_interface>
+    </joint>
+
+    <joint name="j2">
+        <command_interface name="position"/>
+        <state_interface name="position"> 
+            <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity">
+            <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+        </state_interface>
+    </joint>
+
+    <joint name="j3">
+        <command_interface name="position"/>
+        <state_interface name="position"> 
+            <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity">
+            <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="effort">
+            <param name="initial_value">0.0</param>
+        </state_interface>
+    </joint>
+
+  </ros2_control>
+  
   
 </robot>
