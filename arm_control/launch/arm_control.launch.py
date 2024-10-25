@@ -12,21 +12,36 @@ from launch.actions import (
 )
 from launch.actions import RegisterEventHandler
 from launch.event_handlers import OnProcessExit
+from launch.actions import TimerAction
+
 
 def generate_launch_description():
     declared_arguments = []
 
-    joint_state_broadcaster = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager"],
-    )  
 
-    position_controller = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["position_controller", "--controller-manager", "/controller_manager"],  
-    ) 
+
+    joint_state_broadcaster = TimerAction (
+        period=10.0,
+        actions=[
+        Node(
+            package="controller_manager",
+            executable="spawner",
+            arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager"],
+        )
+        ]
+    )
+
+    position_controller = TimerAction (
+        period=10.0,
+        actions=[
+        Node(
+            package="controller_manager",
+            executable="spawner",
+            arguments=["position_controller", "--controller-manager", "/controller_manager"],
+        )
+        ]
+    )
+
 
     # #Launch the ros2 controllers after the model spawns in Gazebo 
     # delay_joint_traj_controller = RegisterEventHandler(
@@ -44,6 +59,7 @@ def generate_launch_description():
     #         )
     #     )
     # )
+
 
     nodes_to_start = [
         joint_state_broadcaster,
