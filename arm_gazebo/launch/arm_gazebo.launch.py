@@ -27,6 +27,7 @@ def generate_launch_description():
 
     
     return LaunchDescription([
-        include_other_launch_arm_world, include_other_launch_arm_control
+        include_other_launch_arm_world, 
+        include_other_launch_arm_control
 
     ])
