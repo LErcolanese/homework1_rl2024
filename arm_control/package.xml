@@ -9,9 +9,18 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+  <build_depend>controller_manager</build_depend>
+  <build_depend>ros2_control</build_depend>
+  <build_depend>robot_state_publisher</build_depend>
+
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
-
+  
+  <depend>tf2_geometry_msgs</depend>
+  <exec_depend>rclcpp</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>controller_interface</exec_depend>
+  
   <export>
     <build_type>ament_cmake</build_type>
   </export>

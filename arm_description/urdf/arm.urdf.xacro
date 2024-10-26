@@ -397,23 +397,47 @@
     </inertial>
   </link>
 
-   
+  <!-- <joint name="camera_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="camera_link"/>
+      <origin xyz="0.0 0 0.00" rpy="0.0 -1.57 0"/>
+  </joint>
+
+  <link name="camera_link">
+      <visual>
+          <geometry>
+              <box size="0.010 0.01000003 0.01000003"/>
+          </geometry>
+          <material name="red"/>
+      </visual>
+  </link> -->
+
+  <xacro:include filename="$(find arm_description)/urdf/cam_tot.xacro"/>
+
+  <xacro:my_camera parent_link="base_link"/>
+
   <gazebo>  
     <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
     <parameters>$(find arm_control)/config/arm_controllers.yaml</parameters>
       <controller_manager_prefix_node_name>controller_manager</controller_manager_prefix_node_name>
     </plugin>
   </gazebo>
-
-
-
+  
+  <xacro:include filename="$(find arm_description)/urdf/arm_hardware_interface.xacro"/>
+ 
+ 
   <ros2_control name="HardwareInterface_Ignition" type="system">
-
+ 
     <hardware>
-      <plugin>ign_ros2_control/IgnitionSystem</plugin> 
+      <plugin>ign_ros2_control/IgnitionSystem</plugin>
     </hardware>
  
-     <joint name="j0">
+    <xacro:joint_ros2_control name="j0"/>   
+    <xacro:joint_ros2_control name="j1"/>   
+    <xacro:joint_ros2_control name="j2"/>   
+    <xacro:joint_ros2_control name="j3"/>  
+
+     <!-- <joint name="j0">
         <command_interface name="position"/>
         <state_interface name="position"> 
             <param name="initial_value">0.0</param>
@@ -463,9 +487,10 @@
         <state_interface name="effort">
             <param name="initial_value">0.0</param>
         </state_interface>
-    </joint>
+    </joint> -->
 
   </ros2_control>
+  
   
   
 </robot>

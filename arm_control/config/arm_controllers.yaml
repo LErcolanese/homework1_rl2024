@@ -17,3 +17,7 @@ position_controller:
       - j1
       - j2
       - j3
+
+    limits:
+      max_velocity: 5.0  # Limite di velocità in rad/s
+      max_acceleration: 2.5  # Limite di accelerazione in rad/s^2
